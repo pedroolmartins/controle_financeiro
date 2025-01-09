@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { Loading, Promotion } from '@element-plus/icons-vue';
+import { Edit, Loading, Promotion } from '@element-plus/icons-vue';
+
+
+definePageMeta({
+  middleware: 'auth'
+})
 
 const route = useRoute()
 const message = 'test'
@@ -10,9 +15,20 @@ const value1 = ref('')
   <div>
     <p>Current route: {{ route.path }}</p>
 
-    <el-button @click="ElMessage('hello')">{{ message }}</el-button>
-    <ElButton :icon="ElIconEditPen" type="success">button</ElButton>
-    <LazyElButton :icon="ElIconApple" type="warning">lazy button</LazyElButton>
+    <div>
+      <NuxtLink to="/cadastro_despesas">
+        <el-button @click="ElMessage('hello')">
+          Cadastrar nova despesa
+        </el-button>
+      </NuxtLink>
+    </div>
+    <el-button type="primary" :icon="Edit">Edit</el-button>
+    <NuxtLink to="/cadastro_despesas" class="">
+      <ElButton :icon="ElIconEditPen" type="success">
+        Cadastrar nova despesa
+      </ElButton>
+    </NuxtLink>
+    <el-button type="primary" :icon="Edit">Edit</el-button>
 
     <div class="block">
       <span class="demonstration">Default</span>
