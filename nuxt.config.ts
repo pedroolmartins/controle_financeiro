@@ -10,6 +10,22 @@ export default defineNuxtConfig({
     }
   },
 
+  app: {
+    // head
+    head: {
+      title: 'Controle de Finanças',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'ElementPlus + Nuxt3',
+        },
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    }
+  },
+
   // css
   css: [
     '/assets/scss/index.scss'
@@ -17,12 +33,26 @@ export default defineNuxtConfig({
 
   modules: [
     '@vite-pwa/nuxt',
-    '@element-plus/nuxt'
+    '@element-plus/nuxt',
+    '@vueuse/nuxt',
   ],
   pwa: {
 
   },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          additionalData: `@use "/assets/scss/element/index.scss" as element;`,
+        },
+      },
+    },
+  },
+
   elementPlus: {
+    importStyle: 'scss',
     themes: ['dark'],
     defaultLocale: 'pt-br',
     imports: [
