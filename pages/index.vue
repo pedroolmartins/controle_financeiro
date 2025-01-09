@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Loading } from '@element-plus/icons-vue';
+import { Loading, Promotion } from '@element-plus/icons-vue';
 
 const route = useRoute()
 const message = 'test'
@@ -20,7 +20,7 @@ const value1 = ref('')
     </div>
     <a href="">teste</a>
     <el-icon class="is-loading">
-      <Loading />
+      <Promotion />
     </el-icon>
   </div>
 </template>

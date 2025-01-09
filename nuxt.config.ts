@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 
   // css
   css: [
-    '/assets/scss/index.scss'
+    '@/assets/scss/index.scss'
   ],
 
   modules: [
@@ -45,7 +45,7 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
-          additionalData: `@use "/assets/scss/element/index.scss" as element;`,
+          additionalData: `@use "@/assets/scss/element/index.scss" as element;`,
         },
       },
     },
