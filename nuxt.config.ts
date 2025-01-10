@@ -1,7 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+
   experimental: { appManifest: false },
+
+  modules: [
+    '@vite-pwa/nuxt',
+    '@element-plus/nuxt',
+    '@vueuse/nuxt',
+  ],
 
   devtools: {
     enabled: true,
@@ -12,11 +19,15 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: '/controle_financeiro',
     // head
     head: {
       title: 'Controle de Finanças',
       meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
         {
           hid: 'description',
           name: 'description',
@@ -29,14 +40,16 @@ export default defineNuxtConfig({
 
   // css
   css: [
-    '@/assets/scss/index.scss'
+    '~/assets/scss/index.scss',
   ],
 
-  modules: [
-    '@vite-pwa/nuxt',
-    '@element-plus/nuxt',
-    '@vueuse/nuxt',
-  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
   pwa: {
 
   },

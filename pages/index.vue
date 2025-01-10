@@ -38,5 +38,15 @@ const value1 = ref('')
     <el-icon class="is-loading">
       <Promotion />
     </el-icon>
+
+    <div class="relative rounded-xl overflow-auto p-2">
+      <div
+        class="flex justify-center space-x-4 font-mono text-white text-sm font-bold leading-6 bg-stripes-blue rounded-lg">
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center bg-blue-500 shadow-lg">01</div>
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center bg-blue-500 shadow-lg">02</div>
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center bg-blue-500 shadow-lg">03</div>
+      </div>
+    </div>
+    <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
   </div>
 </template>

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="p-3">
         <slot />
     </div>
 </template>

@@ -1,34 +1,27 @@
 <template>
-    <el-form ref="ruleFormRef" style="max-width: 600px" :model="ruleForm" :rules="rules" label-width="auto"
-        class="demo-ruleForm" :size="formSize" status-icon>
-        <el-form-item label="Activity name" prop="name" :label-position="itemLabelPosition">
+    <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="auto" class="demo-ruleForm"
+        :size="formSize" status-icon>
+        <el-form-item label="Despesa" prop="name" :label-position="itemLabelPosition">
             <el-input v-model="ruleForm.name" />
         </el-form-item>
-        <el-form-item label="Activity zone" prop="region" :label-position="itemLabelPosition">
+        <el-form-item label="Tipo" prop="region" :label-position="itemLabelPosition">
             <el-select v-model="ruleForm.region" placeholder="Activity zone">
                 <el-option label="Zone one" value="shanghai" />
                 <el-option label="Zone two" value="beijing" />
             </el-select>
         </el-form-item>
-        <el-form-item label="Activity count" :label-position="itemLabelPosition" prop="count">
-            <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
-        </el-form-item>
-        <el-form-item label="Activity time" :label-position="itemLabelPosition" required>
-            <el-col :span="11">
+        <el-form-item label="Data" :label-position="itemLabelPosition" required>
+            <el-col>
                 <el-form-item prop="date1">
                     <el-date-picker v-model="ruleForm.date1" type="date" aria-label="Pick a date"
-                        placeholder="Pick a date" style="width: 100%" />
+                        placeholder="Pick a date" style="width: 100%" format="DD/MM/YYYY" />
                 </el-form-item>
             </el-col>
-            <el-col class="text-center" :span="2">
-                <span class="text-gray-500">-</span>
-            </el-col>
-            <el-col :span="11">
-                <el-form-item prop="date2">
-                    <el-time-picker v-model="ruleForm.date2" aria-label="Pick a time" placeholder="Pick a time"
-                        style="width: 100%" />
-                </el-form-item>
-            </el-col>
+        </el-form-item>
+        <el-form-item label="Valor" :label-position="itemLabelPosition" required>
+            <el-input v-model="ruleForm.value" placeholder=""
+                :formatter="(value: any) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
+                :parser="(value: any) => value.replace(/\$\s?|(,*)/g, '')" />
         </el-form-item>
         <el-form-item label="Instant delivery" :label-position="itemLabelPosition" prop="delivery">
             <el-switch v-model="ruleForm.delivery" />
@@ -85,6 +78,7 @@ interface RuleForm {
     type: string[]
     resource: string
     desc: string
+    value: string
 }
 
 const labelPosition = ref<FormProps['labelPosition']>('top')
@@ -92,7 +86,7 @@ const itemLabelPosition = ref<FormItemProps['labelPosition']>('top')
 const formSize = ref<ComponentSize>('default')
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
-    name: 'Hello',
+    name: '',
     region: '',
     count: '',
     date1: '',
@@ -102,6 +96,7 @@ const ruleForm = reactive<RuleForm>({
     type: [],
     resource: '',
     desc: '',
+    value: '',
 })
 
 const locationOptions = ['Home', 'Company', 'School']
