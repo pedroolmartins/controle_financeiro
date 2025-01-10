@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
-
+ 
   app: {
     baseURL: '/controle_financeiro',
     // head
